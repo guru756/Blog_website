@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %}Blogs{% endblock %} {% block body %}
+<div class="container" style="padding: 15px">
+  <h1 style="text-align: center">Welcome to Blogs</h1>
+  {% for blog in blogs %}
+  <div
+    style="
+      border: 2px solid #138d75;
+      padding: 12px;
+      border-radius: 15px;
+      background-color: lightblue;
+      padding-left: 10px;
+    "
+  >
+    <p
+      style="
+        font-size: 27px;
+        padding: 5px;
+        border-radius: 5px;
+        color: #2e4053;
+        padding-left: 10px;
+      "
+    >
+      {{blog.title}}
+    </p>
+    <p
+      style="
+        font-size: 17px;
+        border-radius: 5px;
+        padding-left: 10px;
+        color: #515a5a;
+        text-align: justify;
+      "
+    >
+      {{blog.content|safe}}
+    </p>
+    <p style="padding-left: 10px; color: blue">
+      <b style="color: black">Author Name :</b> {{blog.author}} &nbsp; &nbsp;
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b style="color: black">
+        Date:
+      </b>
+      {{blog.date}}
+    </p>
+  </div>
+  <br />
+  {% endfor %}
+</div>
+{% endblock %}

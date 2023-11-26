@@ -1,0 +1,59 @@
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+  crossorigin="anonymous"
+/>
+{% extends 'base.html' %} {% block title %}Login{% endblock %} {% block body %}
+{% if current_user %} You are already logged in as {{current_user}}
+<a
+  class="btn btn-primary mt-3 mb-3 ml-auto mr-0"
+  style="width: 10rem"
+  href="/logout"
+  >Log out</a
+>
+{% else %}
+<div class="container" style="text-align: center">
+  <h2 style="text-decoration: underline">Log In</h2>
+  <div style="width: 400px; margin-left: 33%; margin-top: 10vh; height: 50vh">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          name="uname"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          required
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mb-4">
+        <input
+          type="password"
+          name="pwd"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          required
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="d-grid gap-2">
+        <button
+          class="btn btn-primary"
+          type="submit"
+          name="submit"
+          value="Login"
+        >
+          Sign In
+        </button>
+        <p style="text-align: center">
+          Not a Member? <a href="{% url 'signup'%}">Register</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %} {% endblock %}

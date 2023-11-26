@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>My Site</h1>
+    <hr>
+    <a href="/">Home</a>
+    <span>/</span>
+
+    {% if current_user %}
+        <a href="{% url 'logout' %}">Logout</a>
+        <h2>Welcome <span style="color: dodgerblue;">{{current_user}}</span>!</h2>
+        <a href='{% url "show" %}'>show</a>
+    {% else %}
+        <a href="{% url 'signin' %}">Login</a>
+        <span>/</span>
+        <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+
+
+    {% block body %}{% endblock %}
+</body>
+</html>
